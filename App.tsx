@@ -7,7 +7,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/View/HomeScreen';
 import Ao_cuoi from './src/View/Ao_cuoi';
 import Dich_vu from './src/View/Dich_vu';
-
+import Chitiet_aocuoi from './src/View/Chitiet_aocuoi';
+import Chitiet_dichvu from './src/View/Chitiet_dichvu';
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
@@ -39,6 +40,16 @@ function App() {
         <Stack.Screen
           name="Dịch vu"
           component={Dich_vu}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Chitiet_aocuoi"
+          component={Chitiet_aocuoi}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Chitiet_dichvu"
+          component={Chitiet_dichvu}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
