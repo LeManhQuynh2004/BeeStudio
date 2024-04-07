@@ -29,9 +29,9 @@ const Dich_vu = (props) => {
     fetchAlbums();
   }, []);
 
-  const Click = () => {
-    navigation.navigate('Chitiet_dichvu');
-  }
+  const handleItemClick = (item) => {
+    navigation.navigate('Chitiet_dichvu', { album: item });
+  };
 
   const [imgAtic, setImgAtic] = useState(0);
 
@@ -60,7 +60,6 @@ const Dich_vu = (props) => {
           pagingEnabled
           horizontal
           style={styles.wrap}
-         
           contentOffset={{ x: imgAtic * WIDTH, y: 0 }}
         >
           {images.map((e, index) => (
@@ -87,70 +86,19 @@ const Dich_vu = (props) => {
             horizontal
             data={albums}
             renderItem={({ item }) => (
-              <Pressable onPress={Click}>
+              <Pressable onPress={() => handleItemClick(item)}>
                 <View style={styles.albumItem}>
                   <Image source={{ uri: item.image[0] }} style={styles.albumImage} />
                   <Text style={styles.albumText}>Tên: {item.name}</Text>
                   <Text style={styles.albumText}>Price: {item.price}</Text>
-                  <Text style={styles.albumText}>describe: {item.describe}</Text>
                   <Text style={styles.albumText}>location: {item.location}</Text>
-                  <Text style={styles.albumText}>utilities: {item.utilities}</Text>
-                  <Text style={styles.albumText}>time: {item.time}</Text>
-                  
-                  <Text style={styles.albumText}>result: {item.result}</Text>
-                  <Text style={styles.albumText}>isFavorite: {item.isFavorite}</Text>
-                  <Text style={styles.albumText}>__V: {item.__v}</Text>
+             
                 </View>
               </Pressable>
             )}
             keyExtractor={(item) => item._id}
           />
-          {/*  */}
-          <FlatList
-            horizontal
-            data={albums}
-            renderItem={({ item }) => (
-              <Pressable onPress={Click}>
-                <View style={styles.albumItem}>
-                  <Image source={{ uri: item.image[0] }} style={styles.albumImage} />
-                  <Text style={styles.albumText}>Tên: {item.name}</Text>
-                  <Text style={styles.albumText}>Price: {item.price}</Text>
-                  <Text style={styles.albumText}>describe: {item.describe}</Text>
-                  <Text style={styles.albumText}>location: {item.location}</Text>
-                  <Text style={styles.albumText}>utilities: {item.utilities}</Text>
-                  <Text style={styles.albumText}>time: {item.time}</Text>
-                  
-                  <Text style={styles.albumText}>result: {item.result}</Text>
-                  <Text style={styles.albumText}>isFavorite: {item.isFavorite}</Text>
-                  <Text style={styles.albumText}>__V: {item.__v}</Text>
-                </View>
-              </Pressable>
-            )}
-            keyExtractor={(item) => item._id}
-          />
-          {/*  */}
-          <FlatList
-            horizontal
-            data={albums}
-            renderItem={({ item }) => (
-              <Pressable onPress={Click}>
-                <View style={styles.albumItem}>
-                  <Image source={{ uri: item.image[0] }} style={styles.albumImage} />
-                  <Text style={styles.albumText}>Tên: {item.name}</Text>
-                  <Text style={styles.albumText}>Price: {item.price}</Text>
-                  <Text style={styles.albumText}>describe: {item.describe}</Text>
-                  <Text style={styles.albumText}>location: {item.location}</Text>
-                  <Text style={styles.albumText}>utilities: {item.utilities}</Text>
-                  <Text style={styles.albumText}>time: {item.time}</Text>
-                  
-                  <Text style={styles.albumText}>result: {item.result}</Text>
-                  <Text style={styles.albumText}>isFavorite: {item.isFavorite}</Text>
-                  <Text style={styles.albumText}>__V: {item.__v}</Text>
-                </View>
-              </Pressable>
-            )}
-            keyExtractor={(item) => item._id}
-          />
+          <Text style={{marginTop:500}}></Text>
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -195,12 +143,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 20,
     borderColor: "#fff",
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
+    width:173,
+    height:350,
   },
   albumImage: {
     width: 150,
     height: 200,
-    borderRadius: 20
+    borderRadius: 20,
   },
   albumText: {
     color: "black"
@@ -208,5 +158,3 @@ const styles = StyleSheet.create({
 });
 
 export default Dich_vu;
-
-

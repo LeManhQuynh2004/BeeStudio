@@ -21,6 +21,7 @@ const Ao_cuoi = (props) => {
       try {
         const response = await axios.get('https://beeserver-1.onrender.com/dress/data');
         setAlbums(response.data);
+        console.log(Ao_cuoi);
       } catch (error) {
         console.error('Error fetching albums:', error);
       }
@@ -90,16 +91,27 @@ const Ao_cuoi = (props) => {
               <Pressable onPress={Click}>
                 <View style={styles.albumItem}>
                   <Image source={{ uri: item.image[0] }} style={styles.albumImage} />
-                  <Text style={styles.albumText}>Tên: {item.name}</Text>
+                  <Text style={{fontWeight:"bold",color:"black",fontSize:17}}>MÃ SỐ :A1234</Text>
+                  <Text style={styles.albumText}>{item.name}</Text>
                   <Text style={styles.albumText}>Price: {item.price}</Text>
-                  <Text style={styles.albumText}>Describe: {item.describe}</Text>
                   <Text style={styles.albumText}>Rental Price: {item.rental_price}</Text>
-                  <Text style={styles.albumText}>Size: {item.size}</Text>
-                  <Text style={styles.albumText}>Color: {item.color.join(', ')}</Text>
-                  <Text style={styles.albumText}>Material: {item.material}</Text>
-                  <Text style={styles.albumText}>Style: {item.style}</Text>
-                  <Text style={styles.albumText}>Quantity: {item.quantity}</Text>
-                  <Text style={styles.albumText}>__V: {item.__v}</Text>
+                </View>
+              </Pressable>
+            )}
+            keyExtractor={(item) => item._id}
+          />
+
+<FlatList
+            horizontal
+            data={albums}
+            renderItem={({ item }) => (
+              <Pressable onPress={Click}>
+                <View style={styles.albumItem}>
+                  <Image source={{ uri: item.image[0] }} style={styles.albumImage} />
+                  <Text style={{fontWeight:"bold",color:"black",fontSize:17}}>MÃ SỐ :A1234</Text>
+                  <Text style={styles.albumText}>{item.name}</Text>
+                  <Text style={styles.albumText}>Price: {item.price}</Text>
+                  <Text style={styles.albumText}>Rental Price: {item.rental_price}</Text>
                 </View>
               </Pressable>
             )}
@@ -112,43 +124,18 @@ const Ao_cuoi = (props) => {
               <Pressable onPress={Click}>
                 <View style={styles.albumItem}>
                   <Image source={{ uri: item.image[0] }} style={styles.albumImage} />
-                  <Text style={styles.albumText}>Tên: {item.name}</Text>
+                  <Text style={{fontWeight:"bold",color:"black",fontSize:17}}>MÃ SỐ :A1234</Text>
+                  <Text style={styles.albumText}>{item.name}</Text>
                   <Text style={styles.albumText}>Price: {item.price}</Text>
-                  <Text style={styles.albumText}>Describe: {item.describe}</Text>
+                  <Text>VNĐ</Text>
                   <Text style={styles.albumText}>Rental Price: {item.rental_price}</Text>
-                  <Text style={styles.albumText}>Size: {item.size}</Text>
-                  <Text style={styles.albumText}>Color: {item.color.join(', ')}</Text>
-                  <Text style={styles.albumText}>Material: {item.material}</Text>
-                  <Text style={styles.albumText}>Style: {item.style}</Text>
-                  <Text style={styles.albumText}>Quantity: {item.quantity}</Text>
-                  <Text style={styles.albumText}>__V: {item.__v}</Text>
+                  <Text>VNĐ</Text>
                 </View>
               </Pressable>
             )}
             keyExtractor={(item) => item._id}
           />
-          <FlatList
-            horizontal
-            data={albums}
-            renderItem={({ item }) => (
-              <Pressable onPress={Click}>
-                <View style={styles.albumItem}>
-                  <Image source={{ uri: item.image[0] }} style={styles.albumImage} />
-                  <Text style={styles.albumText}>Tên: {item.name}</Text>
-                  <Text style={styles.albumText}>Price: {item.price}</Text>
-                  <Text style={styles.albumText}>Describe: {item.describe}</Text>
-                  <Text style={styles.albumText}>Rental Price: {item.rental_price}</Text>
-                  <Text style={styles.albumText}>Size: {item.size}</Text>
-                  <Text style={styles.albumText}>Color: {item.color.join(', ')}</Text>
-                  <Text style={styles.albumText}>Material: {item.material}</Text>
-                  <Text style={styles.albumText}>Style: {item.style}</Text>
-                  <Text style={styles.albumText}>Quantity: {item.quantity}</Text>
-                  <Text style={styles.albumText}>__V: {item.__v}</Text>
-                </View>
-              </Pressable>
-            )}
-            keyExtractor={(item) => item._id}
-          />
+      
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -193,12 +180,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 20,
     borderColor: "#fff",
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
+    width:173
   },
   albumImage: {
     width: 150,
     height: 200,
-    borderRadius: 20
+    borderRadius: 20,
   },
   albumText: {
     color: "black"
@@ -206,3 +194,4 @@ const styles = StyleSheet.create({
 });
 
 export default Ao_cuoi;
+

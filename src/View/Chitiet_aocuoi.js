@@ -10,6 +10,7 @@ const Chitiet_aocuoi = () => {
             try {
                 const response = await axios.get('https://beeserver-1.onrender.com/dress/data');
                 setAlbums(response.data);
+                console.log(Chitiet_aocuoi);
             } catch (error) {
                 console.error('Error fetching albums:', error);
             }
